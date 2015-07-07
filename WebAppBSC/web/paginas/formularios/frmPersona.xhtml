@@ -4,20 +4,32 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
 
-    <body>
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./css/cssLayout.css"/>
+        <title>Usuarios - BSC</title>
+    </h:head>
+
+    <h:body>
 
         <ui:composition template="../formularios.xhtml">
 
             <ui:define name="top">
-                Insertar Datos Persona
+                <h2>Insertar Datos Persona</h2>
+                <h:form>
+                <p:commandButton id="btnNuevo" value="Nuevo" icon="ui-icon-newwin" 
+                                                 update="frmPersonaNueva:pngNuevo" onclick="PF('wgPersonaInsertar').show()" 
+                                                 title="Agregar Persona nueva" type="button" /> 
+                </h:form>
             </ui:define>
 
             <ui:define name="contenido">
                 <p:growl id="grmensajes" autoUpdate="true"/>
                 <h:form id="frmPersona">
-                    <p:ajaxStatus onstart="dlgStatus.show();" oncomplete="dlgStatus.hide();"/>
+                    <p:ajaxStatus onstart="PF('dlgStatus').show();" onsuccess="PF('dlgStatus').hide();"/>
                     <p:panel id="pnlPersonsaDatos">
                         <p:dataTable id="tblPersona" value="#{controladorUsuario.lstUsuarios}" var="persona" paginator="true" rows="10"
                                      selectionMode="single" rowKey="#{persona.codigo}" selection="#{controladorUsuario.selObjUsuario}"
@@ -25,21 +37,57 @@
                                      rowsPerPageTemplate="5,10,15">  
                             <p:column>
                                 <f:facet name="header">
-                                    <h:outputText value="Cedula"/>
+                                    <h:outputText value="Cédula"/>
                                 </f:facet>
                                 <h:outputText value="#{persona.cedula}"/>
                             </p:column>
                             <p:column>
                                 <f:facet name="header">
-                                    <h:outputText value="Nombre"/>
+                                    <h:outputText value="Nombres"/>
                                 </f:facet>
                                 <h:outputText value="#{persona.nombres}"/>
                             </p:column>
                             <p:column>
                                 <f:facet name="header">
-                                    <h:outputText value="Apellido"/>
+                                    <h:outputText value="Apellidos"/>
                                 </f:facet>
                                 <h:outputText value="#{persona.apellidos}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Alias"/>
+                                </f:facet>
+                                <h:outputText value="#{persona.alias}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Celular"/>
+                                </f:facet>
+                                <h:outputText value="#{persona.celular}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Tlf."/>
+                                </f:facet>
+                                <h:outputText value="#{persona.telefono}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Correo"/>
+                                </f:facet>
+                                <h:outputText value="#{persona.correo}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Dirección"/>
+                                </f:facet>
+                                <h:outputText value="#{persona.direccion}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Rol"/>
+                                </f:facet>
+                                <h:outputText value="#{persona.objTipoUsuario.descripcion}"/>
                             </p:column>
 
                             <p:column>  
@@ -62,9 +110,7 @@
                             </p:column>  
 
                             <f:facet name="footer">  
-                                <p:commandButton id="btnNuevo" value="Nuevo" icon="ui-icon-newwin" 
-                                                 update="frmPersonaNueva:pngNuevo" onclick="PF('wgPersonaInsertar').show()" 
-                                                 title="Agregar Persona nueva" type="button" /> 
+                                
 
                             </f:facet>
                         </p:dataTable>
@@ -77,7 +123,7 @@
                           modal="true" closable="false" resizable="false"
                           showEffect="fade" hideEffect="explode">  
                     <h:form id="frmPersonaNueva">
-                        <p:ajaxStatus onstart="dlgStatus.show();" oncomplete="dlgStatus.hide();"/>
+                        <p:ajaxStatus onstart="PF('dlgStatus').show()" onsuccess="PF('dlgStatus').hide()"/>
                         <p:panelGrid id="pngNuevo" columns="2">
                             <h:outputText value="Cedula:"/>
                             <p:inputText value="#{controladorUsuario.objUsuario.cedula}"/>
@@ -93,7 +139,7 @@
                         </p:panelGrid>
                         <p:separator/>
                         <p:commandButton value="Aceptar" action="#{controladorUsuario.insertarUsuario()}" update=":frmPersona:pnlPersonsaDatos"/>
-                        <p:commandButton value="Cancelar" process="@this" onclick="wgPersonaInsertar.hide()" type="reset"/>
+                        <p:commandButton value="Cancelar" process="@this" onclick="PF('wgPersonaInsertar').hide()" type="reset"/>
                     </h:form> 
                 </p:dialog>
 
@@ -143,12 +189,8 @@
                     <p:graphicImage value="/resources/images/ajaxloadingbar.gif" />  
                 </p:dialog>
 
-
-
             </ui:define>
-
         </ui:composition>
-
-    </body>
+    </h:body>
 </html>
 

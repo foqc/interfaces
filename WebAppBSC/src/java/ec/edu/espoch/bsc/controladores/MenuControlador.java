@@ -43,7 +43,7 @@ public class MenuControlador {
 
     public void asignarRutas() {
 
-        this.ruta = "paginas/formularios/frmPersona.xhtml";
+        this.ruta = "faces/paginas/formularios/frmPersona.xhtml";
 
     }
 

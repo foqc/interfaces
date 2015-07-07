@@ -11,7 +11,6 @@ import ec.edu.espoch.bsc.accesodatos.Parametro;
 import ec.edu.espoch.bsc.entidades.CTipoUsuario;
 import ec.edu.espoch.bsc.entidades.CUsuario;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,7 +53,6 @@ public class MUsuario {
         List<CUsuario> lstUsuarios = new ArrayList<>();
         try {
             String sql = "select * from bsc.fn_select_tusuario()";
-            ResultSet rs1;
             ConjuntoResultado rs = AccesoDatos.ejecutaQuery(sql);
             while (rs.next()) {
                 CUsuario usuario = new CUsuario();

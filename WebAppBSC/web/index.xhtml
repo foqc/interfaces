@@ -40,7 +40,7 @@
                 </h:form>
             </p:layoutUnit>
             <p:layoutUnit position="center" gutter="1" >
-                <p:ajaxStatus onstart="dlgStatus.show();" oncomplete="dlgStatus.hide();"/>
+                <p:ajaxStatus onstart="PF('dlgStatus').show();" onsuccess="PF('dlgStatus').hide();"/>
                 <h:panelGroup id="paginas">
                     <iframe name="paginas" width="99.8%" height="99%" src="#{menuControlador.ruta}" style="border: 0"/>
                 </h:panelGroup>
