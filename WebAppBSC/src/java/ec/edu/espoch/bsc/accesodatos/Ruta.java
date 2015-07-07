@@ -11,10 +11,10 @@ import java.net.URL;
  */
 public class Ruta {
     //OJO AQUI VA EL PATH RELATIVO DEL ARCHIVO PROPERTIES
-    private final String dbOracle="/ec/com/riogal/propiedades/dboracle.properties";
-    private final String dbMysql="/ec/com/riogal/propiedades/dbmysql.properties";
-    private final String dbPostgres="/propiedades/dbpostgres.properties";
-    private final String dbSqlServer="/ec/com/riogal/propiedades/dbsqlserver.properties";
+    private final String dbOracle="/ec/edu/espoch/bsc/propiedades/dboracle.properties";
+    private final String dbMysql="/ec/edu/espoch/bsc/propiedades/dbmysql.properties";
+    private final String dbPostgres="/ec/edu/espoch/bsc/propiedades/dbpostgres.properties";
+    private final String dbSqlServer="/ec/edu/espoch/bsc/propiedades/dbsqlserver.properties";
     
     public URL getFileDbOracle(){
         return getClass().getResource(dbOracle);
