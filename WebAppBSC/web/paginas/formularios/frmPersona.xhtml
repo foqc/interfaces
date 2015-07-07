@@ -1,0 +1,154 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+
+    <body>
+
+        <ui:composition template="../formularios.xhtml">
+
+            <ui:define name="top">
+                Insertar Datos Persona
+            </ui:define>
+
+            <ui:define name="contenido">
+                <p:growl id="grmensajes" autoUpdate="true"/>
+                <h:form id="frmPersona">
+                    <p:ajaxStatus onstart="dlgStatus.show();" oncomplete="dlgStatus.hide();"/>
+                    <p:panel id="pnlPersonsaDatos">
+                        <p:dataTable id="tblPersona" value="#{controladorUsuario.lstUsuarios}" var="persona" paginator="true" rows="10"
+                                     selectionMode="single" rowKey="#{persona.codigo}" selection="#{controladorUsuario.selObjUsuario}"
+                                     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"  
+                                     rowsPerPageTemplate="5,10,15">  
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Cedula"/>
+                                </f:facet>
+                                <h:outputText value="#{persona.cedula}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Nombre"/>
+                                </f:facet>
+                                <h:outputText value="#{persona.nombres}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Apellido"/>
+                                </f:facet>
+                                <h:outputText value="#{persona.apellidos}"/>
+                            </p:column>
+
+                            <p:column>  
+                                <f:facet name="header">  
+                                    <h:outputText value="Acciones" />  
+                                </f:facet>  
+                                <p:commandButton id="btnActualizarPersona" icon="ui-icon-pencil"  title="Actualizar"
+                                                 process="@this" oncomplete="PF('wgEditarPersona').show()"
+                                                 update=":dlgEditarPersona @parent">                                   
+                                    <f:setPropertyActionListener value="#{persona}" 
+                                                                 target="#{controladorUsuario.selObjUsuario}"/>
+                                </p:commandButton>
+
+                                <p:commandButton id="btnEliminarAreaTrabajo" icon="ui-icon-trash"  title="Eliminar"
+                                                 process="@this" oncomplete="PF('wgEliminarPersona').show()"
+                                                 update=":dlgEliminarPersona @parent"> 
+                                    <f:setPropertyActionListener value="#{persona}" 
+                                                                 target="#{controladorUsuario.selObjUsuario}"/>
+                                </p:commandButton>
+                            </p:column>  
+
+                            <f:facet name="footer">  
+                                <p:commandButton id="btnNuevo" value="Nuevo" icon="ui-icon-newwin" 
+                                                 update="frmPersonaNueva:pngNuevo" onclick="PF('wgPersonaInsertar').show()" 
+                                                 title="Agregar Persona nueva" type="button" /> 
+
+                            </f:facet>
+                        </p:dataTable>
+                    </p:panel>
+                </h:form>
+            </ui:define>
+
+            <ui:define name="dialogos">
+                <p:dialog id="dlgPersonaInsertar" header="INGRESAR NUEVA PERSONA" widgetVar="wgPersonaInsertar"
+                          modal="true" closable="false" resizable="false"
+                          showEffect="fade" hideEffect="explode">  
+                    <h:form id="frmPersonaNueva">
+                        <p:ajaxStatus onstart="dlgStatus.show();" oncomplete="dlgStatus.hide();"/>
+                        <p:panelGrid id="pngNuevo" columns="2">
+                            <h:outputText value="Cedula:"/>
+                            <p:inputText value="#{controladorUsuario.objUsuario.cedula}"/>
+
+                            <h:outputText value="Nombres:"/>
+                            <p:inputText value="#{controladorUsuario.objUsuario.nombres}"/>
+
+                            <h:outputText value="Apellidos:"/>
+                            <p:inputText value="#{controladorUsuario.objUsuario.apellidos}"/>
+
+                            <h:outputText value="Direccion:"/>
+                            <p:inputText value="#{controladorUsuario.objUsuario.direccion}"/>
+                        </p:panelGrid>
+                        <p:separator/>
+                        <p:commandButton value="Aceptar" action="#{controladorUsuario.insertarUsuario()}" update=":frmPersona:pnlPersonsaDatos"/>
+                        <p:commandButton value="Cancelar" process="@this" onclick="wgPersonaInsertar.hide()" type="reset"/>
+                    </h:form> 
+                </p:dialog>
+
+                <p:dialog id="dlgEditarPersona" header="MODIFICAR DATOS PERSONA" widgetVar="wgEditarPersona" modal="true" closable="false" resizable="false"
+                          showEffect="fade" hideEffect="explode">  
+                    <h:form id="frmActualizarPersona">                       
+
+                        <p:panelGrid id="pngEditar" columns="2">
+                            <h:outputText value="Cedula:"/>
+                            <p:inputText value="#{controladorUsuario.selObjUsuario.cedula}"/>
+
+                            <h:outputText value="Nombres:"/>
+                            <p:inputText value="#{controladorUsuario.selObjUsuario.nombres}"/>
+
+                            <h:outputText value="Apellidos:"/>
+                            <p:inputText value="#{controladorUsuario.selObjUsuario.apellidos}"/>
+
+                            <h:outputText value="Direccion:"/>
+                            <p:inputText value="#{controladorUsuario.selObjUsuario.direccion}"/>
+                        </p:panelGrid>
+                        <p:separator/>
+                        <p:commandButton value="Aceptar" actionListener="#{controladorUsuario.actualizarPersona()}" update=":frmPersona:pnlPersonsaDatos"/>
+                        <!--<p:commandButton value="Aceptar" update=":frmAreaTrabajo:pnlAreaTrabajo"/>-->
+                        <p:commandButton value="Cancelar" onclick="wgEditarPersona.hide()" type="reset"/>
+                    </h:form> 
+                </p:dialog>
+
+                <p:dialog id="dlgEliminarPersona"  widgetVar="wgEliminarPersona" header="Esta seguro que desea eliminar el a la persona"  modal="true" closable="false" resizable="false"
+                          showEffect="fade" hideEffect="explode">  
+                    <h:form id="frmEliminarPersona">
+
+                        <p:panelGrid id="pngEliminar" columns="2">
+                            <h:outputText value="Nombres:"/>
+                            <p:inputText value="#{controladorUsuario.selObjUsuario.nombres}"/>
+
+                            <h:outputText value="Apellidos:"/>
+                            <p:inputText value="#{controladorUsuario.selObjUsuario.apellidos}"/>
+
+                        </p:panelGrid>
+                        <p:separator/>
+                        <p:commandButton value="Eliminar" actionListener="#{controladorUsuario.eliminarPersona()}" update=":frmPersona:pnlPersonsaDatos"/>
+                        <p:commandButton value="Cancelar" onclick="PF('wgEliminarPersona').hide()" type="reset"/>
+                    </h:form> 
+                </p:dialog>
+                <p:dialog modal="true" widgetVar="dlgStatus" header="Procesando" draggable="false" closable="false" 
+                          resizable="false"> 
+                    <p:graphicImage value="/resources/images/ajaxloadingbar.gif" />  
+                </p:dialog>
+
+
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
+
