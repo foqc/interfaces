@@ -27,15 +27,15 @@ public class RolBean {
     }
 
     public List<SelectItem> getSelectOneItemsRol() {
-        try{
-        this.selectOneItemsRol = new ArrayList<>();
-        List<CTipoUsuario> roles = MTipoUsuario.cargarTipoUsuarios();
-        for (CTipoUsuario rol : roles) {
-            SelectItem selectItem = new SelectItem(rol.getCodigo(), rol.getDescripcion());
-            this.selectOneItemsRol.add(selectItem);
-        }
-        }catch(Exception e){
-            System.err.println("%%%%%%%%%%%%%%%%%%%% "+e.getMessage()+"%%%%%%%%%%%%%%%%%%%%");
+        try {
+            this.selectOneItemsRol = new ArrayList<>();
+            List<CTipoUsuario> roles = MTipoUsuario.cargarTipoUsuarios();
+            for (CTipoUsuario rol : roles) {
+                SelectItem selectItem = new SelectItem(rol.getCodigo(), rol.getDescripcion());
+                this.selectOneItemsRol.add(selectItem);
+            }
+        } catch (Exception e) {
+            System.err.println("%%%%%%%%%%%%%%%%%%%% " + e.getMessage() + "%%%%%%%%%%%%%%%%%%%%");
         }
         return this.selectOneItemsRol;
     }

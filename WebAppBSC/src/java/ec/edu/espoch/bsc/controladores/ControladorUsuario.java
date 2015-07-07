@@ -5,6 +5,7 @@
  */
 package ec.edu.espoch.bsc.controladores;
 
+import ec.edu.espoch.bsc.entidades.CTipoUsuario;
 import ec.edu.espoch.bsc.modelo.MUsuario;
 import ec.edu.espoch.bsc.entidades.CUsuario;
 import java.util.ArrayList;
@@ -31,6 +32,7 @@ public class ControladorUsuario {
         this.objUsuario = new CUsuario();
         this.lstUsuarios = new ArrayList<>();
         this.selObjUsuario = new CUsuario();
+        
 //        cargarMateriasEstudiante();
     }
 
@@ -64,6 +66,8 @@ public class ControladorUsuario {
      */
     @PostConstruct
     public void reinit() {
+        CTipoUsuario objTipo= new CTipoUsuario();
+        this.objUsuario.setObjTipoUsuario(objTipo);
         cargarUsuario();
 
     }
@@ -93,6 +97,7 @@ public class ControladorUsuario {
 
     public void insertarUsuario() {
         try {
+            objUsuario.setClave("12345");
             if (MUsuario.insertarUsuario(objUsuario)) {
                 DefaultRequestContext.getCurrentInstance().execute("wgPersonaInsertar.hide()");
                 Util.addSuccessMessage("Datos Insertados");
