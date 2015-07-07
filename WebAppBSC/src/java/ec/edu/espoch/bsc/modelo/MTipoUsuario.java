@@ -10,28 +10,31 @@ import ec.edu.espoch.bsc.accesodatos.ConjuntoResultado;
 import ec.edu.espoch.bsc.accesodatos.Parametro;
 import ec.edu.espoch.bsc.entidades.CTipoUsuario;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author root
  */
 public class MTipoUsuario {
-    public static boolean insertarPersona(CTipoUsuario tipoUusuario) throws Exception {
-        boolean respuesta = false;
+    
+    public static List<CTipoUsuario> cargarTipoUsuarios() throws Exception {
+        List<CTipoUsuario> lstTipoUsuarios = new ArrayList<>();
         try {
-            ArrayList<Parametro> lstParamTipoUsusario = new ArrayList<>();
-            String sql = "SELECT bsc.fn_insert_ttipousuario(?)";
-            lstParamTipoUsusario.add(new Parametro(1, tipoUusuario.getDescripcion()));
-
-            ConjuntoResultado rs = AccesoDatos.ejecutaQuery(sql, lstParamTipoUsusario);
+            String sql = "select * from bsc.fn_select_ttipousuario()";
+            ConjuntoResultado rs = AccesoDatos.ejecutaQuery(sql);
             while (rs.next()) {
-                if (rs.getBoolean(0)) {
-                    respuesta = true;
-                }
+                CTipoUsuario tipoUsuario = new CTipoUsuario();
+                tipoUsuario.setCodigo(rs.getInt(0));
+                tipoUsuario.setDescripcion(rs.getString(1));
+
+                lstTipoUsuarios.add(tipoUsuario);
             }
+            rs = null;
         } catch (Exception e) {
+            lstTipoUsuarios.clear();
             throw e;
         }
-        return respuesta;
+        return lstTipoUsuarios;
     }
 }

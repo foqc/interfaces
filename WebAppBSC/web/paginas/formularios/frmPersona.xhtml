@@ -87,7 +87,7 @@
                                 <f:facet name="header">
                                     <h:outputText value="Rol"/>
                                 </f:facet>
-                                <h:outputText value="#{persona.objTipoUsuario.descripcion}"/>
+                                <h:outputText value="#{persona.objTipoUsuario.codigo}"/>
                             </p:column>
 
                             <p:column>  
@@ -134,8 +134,26 @@
                             <h:outputText value="Apellidos:"/>
                             <p:inputText value="#{controladorUsuario.objUsuario.apellidos}"/>
 
-                            <h:outputText value="Direccion:"/>
+                            <h:outputText value="Alias:"/>
+                            <p:inputText value="#{controladorUsuario.objUsuario.alias}"/>
+                            
+                            <h:outputText value="Tlf:"/>
+                            <p:inputText value="#{controladorUsuario.objUsuario.telefono}"/>
+                            
+                            <h:outputText value="Celular:"/>
+                            <p:inputText value="#{controladorUsuario.objUsuario.celular}"/>
+                            
+                            <h:outputText value="Correo:"/>
+                            <p:inputText value="#{controladorUsuario.objUsuario.correo}"/>
+                            
+                            <h:outputText value="Dirección:"/>
                             <p:inputText value="#{controladorUsuario.objUsuario.direccion}"/>
+                            
+                            <h:outputText value="Rol:" />
+                            <p:selectOneMenu id="console" value="#{controladorUsuario.objUsuario.objTipoUsuario.codigo}" style="width:125px">
+                                <f:selectItem itemLabel="- Seleccione -" itemValue="" />
+                                <f:selectItems value="#{rolBean.selectOneItemsRol}"/>
+                            </p:selectOneMenu>
                         </p:panelGrid>
                         <p:separator/>
                         <p:commandButton value="Aceptar" action="#{controladorUsuario.insertarUsuario()}" update=":frmPersona:pnlPersonsaDatos"/>
@@ -157,13 +175,28 @@
                             <h:outputText value="Apellidos:"/>
                             <p:inputText value="#{controladorUsuario.selObjUsuario.apellidos}"/>
 
-                            <h:outputText value="Direccion:"/>
+                            <h:outputText value="Alias:"/>
+                            <p:inputText value="#{controladorUsuario.selObjUsuario.alias}"/>
+                            
+                            <h:outputText value="Tlf:"/>
+                            <p:inputText value="#{controladorUsuario.selObjUsuario.telefono}"/>
+                            
+                            <h:outputText value="Celular:"/>
+                            <p:inputText value="#{controladorUsuario.selObjUsuario.celular}"/>
+                            
+                            <h:outputText value="Correo:"/>
+                            <p:inputText value="#{controladorUsuario.selObjUsuario.correo}"/>
+                            
+                            <h:outputText value="Dirección:"/>
                             <p:inputText value="#{controladorUsuario.selObjUsuario.direccion}"/>
+                            
+                            <h:outputText value="Rol:"/>
+                            <p:inputText value="#{controladorUsuario.selObjUsuario.objTipoUsuario.codigo}"/>
                         </p:panelGrid>
                         <p:separator/>
                         <p:commandButton value="Aceptar" actionListener="#{controladorUsuario.actualizarPersona()}" update=":frmPersona:pnlPersonsaDatos"/>
                         <!--<p:commandButton value="Aceptar" update=":frmAreaTrabajo:pnlAreaTrabajo"/>-->
-                        <p:commandButton value="Cancelar" onclick="wgEditarPersona.hide()" type="reset"/>
+                        <p:commandButton value="Cancelar" onclick="PF('wgEditarPersona').hide()" type="reset"/>
                     </h:form> 
                 </p:dialog>
 
