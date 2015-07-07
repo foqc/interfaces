@@ -56,19 +56,19 @@ public class MUsuario {
             ConjuntoResultado rs = AccesoDatos.ejecutaQuery(sql);
             while (rs.next()) {
                 CUsuario usuario = new CUsuario();
-                usuario.setCodigo(rs.getInt(1));
-                usuario.setCedula(rs.getString(2));
-                usuario.setNombres(rs.getString(3));
-                usuario.setApellidos(rs.getString(4));
-                usuario.setAlias(rs.getString(5));
-                usuario.setClave(rs.getString(6));
-                usuario.setTelefono(rs.getString(7));
-                usuario.setCelular(rs.getString(8));
-                usuario.setCorreo(rs.getString(9));
-                usuario.setDireccion(rs.getString(10));
+                usuario.setCodigo(rs.getInt(0));
+                usuario.setCedula(rs.getString(1));
+                usuario.setNombres(rs.getString(2));
+                usuario.setApellidos(rs.getString(3));
+                usuario.setAlias(rs.getString(4));
+                usuario.setClave(rs.getString(5));
+                usuario.setTelefono(rs.getString(6));
+                usuario.setCelular(rs.getString(7));
+                usuario.setCorreo(rs.getString(8));
+                usuario.setDireccion(rs.getString(9));
 
                 CTipoUsuario objTipoUsuario = new CTipoUsuario();
-                objTipoUsuario.setDescripcion(rs.getString(11));
+                objTipoUsuario.setCodigo(rs.getInt(10));
 
                 usuario.setObjTipoUsuario(objTipoUsuario);
 
