@@ -68,6 +68,7 @@ public class ControladorUsuario {
     public void reinit() {
         CTipoUsuario objTipo= new CTipoUsuario();
         this.objUsuario.setObjTipoUsuario(objTipo);
+        this.selObjUsuario.setObjTipoUsuario(objTipo);
         cargarUsuario();
 
     }

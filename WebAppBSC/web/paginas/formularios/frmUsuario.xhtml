@@ -20,9 +20,9 @@
             <ui:define name="top">
                 <h2>Insertar Datos Persona</h2>
                 <h:form>
-                <p:commandButton id="btnNuevo" value="Nuevo" icon="ui-icon-newwin" 
-                                                 update="frmPersonaNueva:pngNuevo" onclick="PF('wgPersonaInsertar').show()" 
-                                                 title="Agregar Persona nueva" type="button" /> 
+                    <p:commandButton id="btnNuevo" value="Nuevo" icon="ui-icon-newwin" 
+                                     update="frmPersonaNueva:pngNuevo" onclick="PF('wgPersonaInsertar').show()" 
+                                     title="Agregar Persona nueva" type="button" /> 
                 </h:form>
             </ui:define>
 
@@ -110,7 +110,7 @@
                             </p:column>  
 
                             <f:facet name="footer">  
-                                
+
 
                             </f:facet>
                         </p:dataTable>
@@ -136,19 +136,19 @@
 
                             <h:outputText value="Alias:"/>
                             <p:inputText value="#{controladorUsuario.objUsuario.alias}"/>
-                            
+
                             <h:outputText value="Tlf:"/>
                             <p:inputText value="#{controladorUsuario.objUsuario.telefono}"/>
-                            
+
                             <h:outputText value="Celular:"/>
                             <p:inputText value="#{controladorUsuario.objUsuario.celular}"/>
-                            
+
                             <h:outputText value="Correo:"/>
                             <p:inputText value="#{controladorUsuario.objUsuario.correo}"/>
-                            
+
                             <h:outputText value="Dirección:"/>
                             <p:inputText value="#{controladorUsuario.objUsuario.direccion}"/>
-                            
+
                             <h:outputText value="Rol:" />
                             <p:selectOneMenu id="console" value="#{controladorUsuario.objUsuario.objTipoUsuario.codigo}" style="width:125px">
                                 <f:selectItem itemLabel="- Seleccione -" itemValue="" />
@@ -177,23 +177,26 @@
 
                             <h:outputText value="Alias:"/>
                             <p:inputText value="#{controladorUsuario.selObjUsuario.alias}"/>
-                            
-                           
-                            
+
+
+
                             <h:outputText value="Tlf:"/>
                             <p:inputText value="#{controladorUsuario.selObjUsuario.telefono}"/>
-                            
+
                             <h:outputText value="Celular:"/>
                             <p:inputText value="#{controladorUsuario.selObjUsuario.celular}"/>
-                            
+
                             <h:outputText value="Correo:"/>
                             <p:inputText value="#{controladorUsuario.selObjUsuario.correo}"/>
-                            
+
                             <h:outputText value="Dirección:"/>
                             <p:inputText value="#{controladorUsuario.selObjUsuario.direccion}"/>
-                            
-                            <h:outputText value="Rol:"/>
-                            <p:inputText value="#{controladorUsuario.selObjUsuario.objTipoUsuario.codigo}"/>
+
+                            <h:outputText value="Rol:" />
+                            <p:selectOneMenu id="console" value="#{controladorUsuario.selObjUsuario.objTipoUsuario.codigo}" style="width:125px">
+                                <f:selectItem itemLabel="- Seleccione -" itemValue="" />
+                                <f:selectItems value="#{rolBean.selectOneItemsRol}"/>
+                            </p:selectOneMenu>
                         </p:panelGrid>
                         <p:separator/>
                         <p:commandButton value="Aceptar" actionListener="#{controladorUsuario.actualizarPersona()}" update=":frmUsuario:pnlPersonsaDatos"/>
