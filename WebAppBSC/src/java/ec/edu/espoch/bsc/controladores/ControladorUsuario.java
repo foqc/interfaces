@@ -95,33 +95,31 @@ public class ControladorUsuario {
         RequestContext.getCurrentInstance().openDialog("dlgEditarPersona");
     }
 
+    //<editor-fold defaultstate="collapsed" desc="Insertar Usuario">
     public void insertarUsuario() {
         try {
             objUsuario.setClave("12345");
             if (MUsuario.insertarUsuario(objUsuario)) {
-                DefaultRequestContext.getCurrentInstance().execute("wgPersonaInsertar.hide()");
+                DefaultRequestContext.getCurrentInstance().execute("PF('wgPersonaInsertar').hide()");
                 Util.addSuccessMessage("Datos Insertados");
                 cargarUsuario();
 
             } else {
                 Util.mostrarMensaje("Datos no insertados Insertados");
             }
-
             objUsuario = null;
         } catch (Exception e) {
             Util.addErrorMessage(e.getMessage());
         }
-
     }
-
-    //Actualizar usuarios
+    //</editor-fold>    
+    //<editor-fold defaultstate="collapsed" desc="Actualizar Usuario">
    public void actualizarPersona() {
         try {
             if (MUsuario.actualizarUsuario(selObjUsuario)) {
-                DefaultRequestContext.getCurrentInstance().execute("wgEditarPersona.hide()");
+                DefaultRequestContext.getCurrentInstance().execute("PF('wgEditarPersona').hide()");
                 Util.addSuccessMessage("Datos actualizados");
                 cargarUsuario();
-
             } else {
                 Util.mostrarMensaje("Datos no actualizados");
             }
@@ -129,9 +127,9 @@ public class ControladorUsuario {
         } catch (Exception e) {
             Util.addErrorMessage(e.getMessage());
         }
-
     }
-
+     //</editor-fold>
+    //<editor-fold defaultstate="collapsed" desc="Eliminar Usuario">
     public void eliminarPersona() {
         try {
             if (MUsuario.eliminarUsuario(selObjUsuario.getCodigo())) {
@@ -140,10 +138,9 @@ public class ControladorUsuario {
                 cargarUsuario();
             }
             selObjUsuario = null;
-
         } catch (Exception e) {
             Util.addErrorMessage(e.getMessage());
         }
     }
-
+    //</editor-fold>
 }

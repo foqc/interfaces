@@ -28,7 +28,7 @@
 
             <ui:define name="contenido">
                 <p:growl id="grmensajes" autoUpdate="true"/>
-                <h:form id="frmPersona">
+                <h:form id="frmUsuario">
                     <p:ajaxStatus onstart="PF('dlgStatus').show();" onsuccess="PF('dlgStatus').hide();"/>
                     <p:panel id="pnlPersonsaDatos">
                         <p:dataTable id="tblPersona" value="#{controladorUsuario.lstUsuarios}" var="persona" paginator="true" rows="10"
@@ -156,7 +156,7 @@
                             </p:selectOneMenu>
                         </p:panelGrid>
                         <p:separator/>
-                        <p:commandButton value="Aceptar" action="#{controladorUsuario.insertarUsuario()}" update=":frmPersona:pnlPersonsaDatos"/>
+                        <p:commandButton value="Aceptar" action="#{controladorUsuario.insertarUsuario()}" update=":frmUsuario:pnlPersonsaDatos"/>
                         <p:commandButton value="Cancelar" process="@this" onclick="PF('wgPersonaInsertar').hide()" type="reset"/>
                     </h:form> 
                 </p:dialog>
@@ -178,6 +178,8 @@
                             <h:outputText value="Alias:"/>
                             <p:inputText value="#{controladorUsuario.selObjUsuario.alias}"/>
                             
+                           
+                            
                             <h:outputText value="Tlf:"/>
                             <p:inputText value="#{controladorUsuario.selObjUsuario.telefono}"/>
                             
@@ -194,27 +196,19 @@
                             <p:inputText value="#{controladorUsuario.selObjUsuario.objTipoUsuario.codigo}"/>
                         </p:panelGrid>
                         <p:separator/>
-                        <p:commandButton value="Aceptar" actionListener="#{controladorUsuario.actualizarPersona()}" update=":frmPersona:pnlPersonsaDatos"/>
+                        <p:commandButton value="Aceptar" actionListener="#{controladorUsuario.actualizarPersona()}" update=":frmUsuario:pnlPersonsaDatos"/>
                         <!--<p:commandButton value="Aceptar" update=":frmAreaTrabajo:pnlAreaTrabajo"/>-->
                         <p:commandButton value="Cancelar" onclick="PF('wgEditarPersona').hide()" type="reset"/>
                     </h:form> 
                 </p:dialog>
 
-                <p:dialog id="dlgEliminarPersona"  widgetVar="wgEliminarPersona" header="Esta seguro que desea eliminar el a la persona"  modal="true" closable="false" resizable="false"
+                <p:dialog id="dlgEliminarPersona"  widgetVar="wgEliminarPersona" header="¿Esta seguro que desea eliminar al usuario"  modal="true" closable="false" resizable="false"
                           showEffect="fade" hideEffect="explode">  
                     <h:form id="frmEliminarPersona">
-
-                        <p:panelGrid id="pngEliminar" columns="2">
-                            <h:outputText value="Nombres:"/>
-                            <p:inputText value="#{controladorUsuario.selObjUsuario.nombres}"/>
-
-                            <h:outputText value="Apellidos:"/>
-                            <p:inputText value="#{controladorUsuario.selObjUsuario.apellidos}"/>
-
-                        </p:panelGrid>
+                        <h:outputText value="#{controladorUsuario.selObjUsuario.nombres} #{controladorUsuario.selObjUsuario.apellidos}?"/>
                         <p:separator/>
-                        <p:commandButton value="Eliminar" actionListener="#{controladorUsuario.eliminarPersona()}" update=":frmPersona:pnlPersonsaDatos"/>
-                        <p:commandButton value="Cancelar" onclick="PF('wgEliminarPersona').hide()" type="reset"/>
+                        <p:commandButton style="width:100px" value="Si" actionListener="#{controladorUsuario.eliminarPersona()}" update=":frmUsuario:pnlPersonsaDatos"/>
+                        <p:commandButton style="width:100px" value="No" onclick="PF('wgEliminarPersona').hide()" type="reset"/>
                     </h:form> 
                 </p:dialog>
                 <p:dialog modal="true" widgetVar="dlgStatus" header="Procesando" draggable="false" closable="false" 

@@ -86,17 +86,18 @@ public class MUsuario {
         boolean respuesta = false;
         try {
             ArrayList<Parametro> lstParamUsusario = new ArrayList<>();
-            String sql = "SELECT bsc.fn_update_tusuario(?,?,?,?,?,?,?,?,?,?)";
-            lstParamUsusario.add(new Parametro(1, usuario.getCedula()));
-            lstParamUsusario.add(new Parametro(2, usuario.getNombres()));
-            lstParamUsusario.add(new Parametro(3, usuario.getApellidos()));
-            lstParamUsusario.add(new Parametro(4, usuario.getAlias()));
-            lstParamUsusario.add(new Parametro(5, usuario.getClave()));
-            lstParamUsusario.add(new Parametro(6, usuario.getTelefono()));
-            lstParamUsusario.add(new Parametro(7, usuario.getCelular()));
-            lstParamUsusario.add(new Parametro(8, usuario.getCorreo()));
-            lstParamUsusario.add(new Parametro(9, usuario.getDireccion()));
-            lstParamUsusario.add(new Parametro(10, usuario.getObjTipoUsuario().getCodigo()));
+            String sql = "SELECT bsc.fn_update_tusuario(?,?,?,?,?,?,?,?,?,?,?)";
+            lstParamUsusario.add(new Parametro(1, usuario.getCodigo()));
+            lstParamUsusario.add(new Parametro(2, usuario.getCedula()));
+            lstParamUsusario.add(new Parametro(3, usuario.getNombres()));
+            lstParamUsusario.add(new Parametro(4, usuario.getApellidos()));
+            lstParamUsusario.add(new Parametro(5, usuario.getAlias()));
+            lstParamUsusario.add(new Parametro(6, usuario.getClave()));
+            lstParamUsusario.add(new Parametro(7, usuario.getTelefono()));
+            lstParamUsusario.add(new Parametro(8, usuario.getCelular()));
+            lstParamUsusario.add(new Parametro(9, usuario.getCorreo()));
+            lstParamUsusario.add(new Parametro(10, usuario.getDireccion()));
+            lstParamUsusario.add(new Parametro(11, usuario.getObjTipoUsuario().getCodigo()));
 
             ConjuntoResultado rs = AccesoDatos.ejecutaQuery(sql, lstParamUsusario);
             while (rs.next()) {
