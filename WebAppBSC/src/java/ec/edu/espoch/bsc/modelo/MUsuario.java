@@ -113,7 +113,7 @@ public class MUsuario {
     public static boolean eliminarUsuario(int codigoPersona) throws Exception {
         boolean respuesta = false;
         try {
-            String sql = "select hojadevida.fn_delete_tpersona(?)";
+            String sql = "select bsc.fn_delete_tusuario(?)";
             ArrayList<Parametro> lstParam = new ArrayList<>();
             lstParam.add(new Parametro(1, codigoPersona));
 

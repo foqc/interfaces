@@ -150,7 +150,7 @@
                             <p:inputText value="#{controladorUsuario.objUsuario.direccion}"/>
                             
                             <h:outputText value="Rol:" />
-                            <p:selectOneMenu id="console" value="#{controladorUsuario.objUsuario.objTipoUsuario.codigo}" style="width:125px">
+                            <p:selectOneMenu id="console" value="#{controladorUsuario.objUsuario.objTipoUsuario}" style="width:125px">
                                 <f:selectItem itemLabel="- Seleccione -" itemValue="" />
                                 <f:selectItems value="#{rolBean.selectOneItemsRol}"/>
                             </p:selectOneMenu>
