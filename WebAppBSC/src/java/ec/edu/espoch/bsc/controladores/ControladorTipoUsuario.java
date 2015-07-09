@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import org.primefaces.context.DefaultRequestContext;
+import recursos.Util;
 
 /**
  *
@@ -19,16 +21,18 @@ import javax.faces.bean.RequestScoped;
 @ManagedBean
 @RequestScoped
 public class ControladorTipoUsuario {
+
     private CTipoUsuario objTipoUsuario;
     private CTipoUsuario selObjTipoUsuario;
     private ArrayList<CTipoUsuario> lstTipoUsuarios;
+
     /**
      * Creates a new instance of ControladorTipoUsuario
      */
     public ControladorTipoUsuario() {
-        this.objTipoUsuario=new CTipoUsuario();
-        this.selObjTipoUsuario=new CTipoUsuario();
-        this.lstTipoUsuarios=new ArrayList<>();
+        this.objTipoUsuario = new CTipoUsuario();
+        this.selObjTipoUsuario = new CTipoUsuario();
+        this.lstTipoUsuarios = new ArrayList<>();
     }
 
     public CTipoUsuario getObjTipoUsuario() {
@@ -54,8 +58,8 @@ public class ControladorTipoUsuario {
     public void setLstTipoUsuarios(ArrayList<CTipoUsuario> lstTipoUsuarios) {
         this.lstTipoUsuarios = lstTipoUsuarios;
     }
-    
-        /*
+
+    /*
      postonstructor se ejecuta luego del constructor
      */
     @PostConstruct
@@ -63,8 +67,8 @@ public class ControladorTipoUsuario {
         cargarTipoUsuario();
 
     }
-    
-        public void cargarTipoUsuario() {
+
+    public void cargarTipoUsuario() {
         try {
             this.lstTipoUsuarios = (ArrayList<CTipoUsuario>) MTipoUsuario.cargarTipoUsuarios();
         } catch (Exception e) {
@@ -72,4 +76,22 @@ public class ControladorTipoUsuario {
         }
     }
     
+    //<editor-fold defaultstate="collapsed" desc="Insertar Rol">
+    public void insertarTipoUsuario() {
+        try {
+            if (MTipoUsuario.insertarTipoUsuario(objTipoUsuario)) {
+                DefaultRequestContext.getCurrentInstance().execute("PF('wgRolInsertar').hide()");
+                Util.addSuccessMessage("Datos Insertados");
+                cargarTipoUsuario();
+
+            } else {
+                Util.mostrarMensaje("Datos no insertados");
+            }
+            objTipoUsuario = null;
+        } catch (Exception e) {
+            Util.addErrorMessage(e.getMessage());
+        }
+    }
+    //</editor-fold>    
+
 }

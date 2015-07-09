@@ -55,14 +55,14 @@
                                 <p:commandButton id="btnActualizarRol" icon="ui-icon-pencil"  title="Actualizar"
                                                  process="@this" oncomplete="PF('wgEditarRol').show()"
                                                  update=":dlgEditarRol @parent">                                   
-                                    <f:setPropertyActionListener value="#{persona}" 
+                                    <f:setPropertyActionListener value="#{roles}" 
                                                                  target="#{controladorTipoUsuario.selObjTipoUsuario}"/>
                                 </p:commandButton>
 
                                 <p:commandButton id="btnEliminarAreaTrabajo" icon="ui-icon-trash"  title="Eliminar"
                                                  process="@this" oncomplete="PF('wgEliminarRol').show()"
                                                  update=":dlgEliminarRol @parent"> 
-                                    <f:setPropertyActionListener value="#{persona}" 
+                                    <f:setPropertyActionListener value="#{roles}" 
                                                                  target="#{controladorTipoUsuario.selObjTipoUsuario}"/>
                                 </p:commandButton>
                             </p:column>  
@@ -87,7 +87,7 @@
                             <p:inputText value="#{controladorTipoUsuario.objTipoUsuario.descripcion}"/>
                         </p:panelGrid>
                         <p:separator/>
-                        <p:commandButton value="Aceptar" action="#{controladorTipoUsuario.insertarUsuario()}" update=":frmRol:pnlRolDatos"/>
+                        <p:commandButton value="Aceptar" action="#{controladorTipoUsuario.insertarTipoUsuario()}" update=":frmRol:pnlRolDatos"/>
                         <p:commandButton value="Cancelar" process="@this" onclick="PF('wgRolInsertar').hide()" type="reset"/>
                     </h:form> 
                 </p:dialog>
