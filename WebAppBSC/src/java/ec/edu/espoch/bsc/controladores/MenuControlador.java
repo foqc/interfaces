@@ -46,5 +46,10 @@ public class MenuControlador {
         this.ruta = "faces/paginas/formularios/frmUsuario.xhtml";
 
     }
+    public void rutaRoles() {
+
+        this.ruta = "faces/paginas/formularios/frmRol.xhtml";
+
+    }
 
 }

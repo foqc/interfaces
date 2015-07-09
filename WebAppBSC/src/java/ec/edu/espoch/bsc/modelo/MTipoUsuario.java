@@ -9,6 +9,7 @@ import ec.edu.espoch.bsc.accesodatos.AccesoDatos;
 import ec.edu.espoch.bsc.accesodatos.ConjuntoResultado;
 import ec.edu.espoch.bsc.accesodatos.Parametro;
 import ec.edu.espoch.bsc.entidades.CTipoUsuario;
+import ec.edu.espoch.bsc.entidades.CUsuario;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +18,26 @@ import java.util.List;
  * @author root
  */
 public class MTipoUsuario {
-    
+
+    public static boolean insertarTipoUsuario(CTipoUsuario tipoUsuario) throws Exception {
+        boolean respuesta = false;
+        try {
+            ArrayList<Parametro> lstParamTipoUsusario = new ArrayList<>();
+            String sql = "SELECT bsc.fn_insert_ttipousuario(?)";
+            lstParamTipoUsusario.add(new Parametro(1, tipoUsuario.getDescripcion()));
+
+            ConjuntoResultado rs = AccesoDatos.ejecutaQuery(sql, lstParamTipoUsusario);
+            while (rs.next()) {
+                if (rs.getBoolean(0)) {
+                    respuesta = true;
+                }
+            }
+        } catch (Exception e) {
+            throw e;
+        }
+        return respuesta;
+    }
+
     public static List<CTipoUsuario> cargarTipoUsuarios() throws Exception {
         List<CTipoUsuario> lstTipoUsuarios = new ArrayList<>();
         try {

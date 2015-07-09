@@ -28,9 +28,9 @@
                 <h:form>
                  <p:messages id="messages" showDetail="true"/>  
                     <p:menu>
-                        <p:submenu label="Persona">
-                            <p:menuitem value="Datos Personales" update=":paginas messages" icon="ui-icon-star" action="#{menuControlador.asignarRutas()}" />
-                            <p:menuitem value="Disapacidades" update="messages" icon="ui-icon-star" action="../paginas/formularios/frmPersona.xhtml"/>
+                        <p:submenu label="Administrar">
+                            <p:menuitem value="Usuarios" update=":paginas messages" icon="ui-icon-star" action="#{menuControlador.asignarRutas()}" />
+                            <p:menuitem value="Roles" update=":paginas messages" icon="ui-icon-star" action="#{menuControlador.rutaRoles()}"/>
                         </p:submenu>
                         <p:submenu label="Datos Generales">
                             <p:menuitem value="Experiencia" update="messages" icon="ui-icon-star"/>

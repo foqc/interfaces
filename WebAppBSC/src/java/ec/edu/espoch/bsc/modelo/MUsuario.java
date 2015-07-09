@@ -10,7 +10,6 @@ import ec.edu.espoch.bsc.accesodatos.ConjuntoResultado;
 import ec.edu.espoch.bsc.accesodatos.Parametro;
 import ec.edu.espoch.bsc.entidades.CTipoUsuario;
 import ec.edu.espoch.bsc.entidades.CUsuario;
-import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
