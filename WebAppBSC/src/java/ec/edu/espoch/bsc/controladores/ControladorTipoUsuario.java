@@ -94,4 +94,21 @@ public class ControladorTipoUsuario {
     }
     //</editor-fold>    
 
+    
+    //<editor-fold defaultstate="collapsed" desc="Actualizar Usuario">
+   public void actualizarTipoPersona() {
+        try {
+            if (MTipoUsuario.actualizarTipoUsuario(selObjTipoUsuario)) {
+                DefaultRequestContext.getCurrentInstance().execute("PF('wgEditarRol').hide()");
+                Util.addSuccessMessage("Datos actualizados");
+                cargarTipoUsuario();
+            } else {
+                Util.mostrarMensaje("Datos no actualizados");
+            }
+            selObjTipoUsuario = null;
+        } catch (Exception e) {
+            Util.addErrorMessage(e.getMessage());
+        }
+    }
+     //</editor-fold>
 }

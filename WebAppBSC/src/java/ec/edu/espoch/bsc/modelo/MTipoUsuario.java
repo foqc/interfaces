@@ -57,4 +57,24 @@ public class MTipoUsuario {
         }
         return lstTipoUsuarios;
     }
+
+    public static boolean actualizarTipoUsuario(CTipoUsuario tipoUsuario)  throws Exception {
+        boolean respuesta = false;
+        try {
+            ArrayList<Parametro> lstParamTipoUsusario = new ArrayList<>();
+            String sql = "SELECT bsc.fn_update_ttipousuario(?,?)";
+            lstParamTipoUsusario.add(new Parametro(1, tipoUsuario.getCodigo()));
+            lstParamTipoUsusario.add(new Parametro(2, tipoUsuario.getDescripcion()));
+
+            ConjuntoResultado rs = AccesoDatos.ejecutaQuery(sql, lstParamTipoUsusario);
+            while (rs.next()) {
+                if (rs.getBoolean(0)) {
+                    respuesta = true;
+                }
+            }
+        } catch (Exception e) {
+            throw e;
+        }
+        return respuesta;
+    }
 }
