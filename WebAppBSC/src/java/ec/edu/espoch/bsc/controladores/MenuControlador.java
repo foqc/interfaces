@@ -10,7 +10,7 @@ import javax.faces.bean.RequestScoped;
 
 /**
  *
- * @author root
+ * @author @foqc
  */
 @ManagedBean
 @RequestScoped

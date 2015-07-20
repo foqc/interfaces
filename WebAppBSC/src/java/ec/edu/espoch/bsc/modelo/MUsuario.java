@@ -15,7 +15,7 @@ import java.util.List;
 
 /**
  *
- * @author root
+ * @author @foqc
  */
 public class MUsuario {
 

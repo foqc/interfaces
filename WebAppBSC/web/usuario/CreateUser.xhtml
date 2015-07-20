@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TusuarioCreateDlg" widgetVar="TusuarioCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="Nuevo Usuario" showEffect="fade" hideEffect="explode">
+            <h:form id="TusuarioCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{controladorUsuario.objUsuario != null}" styleClass="tblForm">                        
+                        <p:outputLabel value="Cédula:" for="tusuariocedula" />
+                        <p:inputText id="tusuariocedula" value="#{controladorUsuario.objUsuario.cedula}" title="Cédula" required="true" requiredMessage="#{bundle.CreateTusuarioRequiredMessage_tusuariocedula}"/>
+
+                        <p:outputLabel value="Nombres:" for="tusuarionombres" />
+                        <p:inputText id="tusuarionombres" value="#{controladorUsuario.objUsuario.nombres}" title="Nombres" required="true" requiredMessage="#{bundle.CreateTusuarioRequiredMessage_tusuarionombres}"/>
+
+                        <p:outputLabel value="Apellidos:" for="tusuarioapellidos" />
+                        <p:inputText id="tusuarioapellidos" value="#{controladorUsuario.objUsuario.apellidos}" title="Apellidos" required="true" requiredMessage="#{bundle.CreateTusuarioRequiredMessage_tusuarioapellidos}"/>
+
+                        <p:outputLabel value="Alias:" for="tusuarioalias" />
+                        <p:inputText id="tusuarioalias" value="#{controladorUsuario.objUsuario.alias}" title="Alias" required="true" requiredMessage="#{bundle.CreateTusuarioRequiredMessage_tusuarioalias}"/>
+
+                        <p:outputLabel value="Clave:" for="tusuarioclave" />
+                        <p:inputText id="tusuarioclave" value="#{controladorUsuario.objUsuario.clave}" title="Clave" required="true" requiredMessage="#{bundle.CreateTusuarioRequiredMessage_tusuarioclave}"/>
+
+                        <p:outputLabel value="Teléfono:" for="tusuariotelefono" />
+                        <p:inputText id="tusuariotelefono" value="#{controladorUsuario.objUsuario.telefono}" title="Teléfono" />
+
+                        <p:outputLabel value="Celular:" for="tusuariocelular" />
+                        <p:inputText id="tusuariocelular" value="#{controladorUsuario.objUsuario.celular}" title="Celular" />
+
+                        <p:outputLabel value="Correo:" for="tusuariocorreo" />
+                        <p:inputText id="tusuariocorreo" value="#{controladorUsuario.objUsuario.correo}" title="Correo" required="true" requiredMessage="#{bundle.CreateTusuarioRequiredMessage_tusuariocorreo}"/>
+
+                        <p:outputLabel value="Dirección:" for="tusuariodireccion" />
+                        <p:inputText id="tusuariodireccion" value="#{controladorUsuario.objUsuario.direccion}" title="Dirección" required="true" requiredMessage="#{bundle.CreateTusuarioRequiredMessage_tusuariodireccion}"/>
+
+                        <p:outputLabel value="Tipo Usuario" for="ttipousuariocodigo" />
+                        <p:selectOneMenu id="ttipousuariocodigo" value="#{controladorUsuario.objUsuario.objTipoUsuario.codigo}" required="true" requiredMessage="#{bundle.EditTusuarioRequiredMessage_ttipousuariocodigo}" style="width:125px">
+                            <f:selectItems value="#{rolBean.selectOneItemsRol}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>     
+                    <p:separator/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PF('TusuarioCreateDialog').hide()" type="reset" styleClass="btnRight"/>
+                    <p:commandButton actionListener="#{controladorUsuario.insertarUsuario()}" value="#{bundle.Save}" update="display,:TusuarioListForm:datalist,:growl" styleClass="btnRight"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

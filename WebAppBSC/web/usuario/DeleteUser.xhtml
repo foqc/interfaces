@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TusuarioDeleteDlg" widgetVar="TusuarioDeleteDialog" modal="true" resizable="false" appendTo="@(body)" header="Eliminar Datos" showEffect="fade" hideEffect="explode">
+            <h:form id="TusuarioDeleteForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{controladorUsuario.selObjUsuario != null}" styleClass="tblForm">                        
+                        <h:outputText value="¿Está seguro que desea eliminar datos de #{controladorUsuario.selObjUsuario.nombres} #{controladorUsuario.selObjUsuario.apellidos}?"/>
+                        
+                    </p:panelGrid>
+                    <p:separator/>
+                    <p:commandButton value="No" onclick="PF('TusuarioDeleteDialog').hide()" styleClass="btnRight"/>
+                    <p:commandButton actionListener="#{controladorUsuario.eliminarPersona()}" value="Si" update="display,:TusuarioListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TusuarioDeleteDialog');" styleClass="btnRight"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

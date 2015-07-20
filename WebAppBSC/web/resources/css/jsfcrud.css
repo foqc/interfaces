@@ -1,0 +1,36 @@
+.ui-widget {
+    font-size: 12px !important;
+}
+.ui-layout-north {
+    z-index: 20 !important;
+    overflow: visible !important;;
+}
+.ui-layout-north .ui-layout-unit-content {
+    overflow: visible !important;
+}
+.ui-widget-header {
+    text-align: center;
+    text-transform: uppercase;
+}
+.ui-button {
+    margin-top: 10px !important;
+}
+.ui-panelgrid .ui-panelgrid-cell {
+    border-style: none !important;
+}
+/* CODIGO PARA QUITAR BORDE A FORMULARIOS (tblForm)*/
+.tblForm .ui-widget-content{
+    border: none !important;
+    font-weight: bold;
+}
+.tblForm .ui-widget-content .tblFormRow{
+    font-weight: normal;
+}
+.btnRight{
+    float: right;
+}
+
+.principal .ui-widget-content{
+    background-color: rgb(4, 122, 172);
+    background-image: none; 
+}

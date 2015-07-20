@@ -8,6 +8,7 @@ package ec.edu.espoch.bsc.controladores;
 import ec.edu.espoch.bsc.entidades.CTipoUsuario;
 import ec.edu.espoch.bsc.modelo.MUsuario;
 import ec.edu.espoch.bsc.entidades.CUsuario;
+import java.io.Serializable;
 import java.util.ArrayList;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -18,11 +19,11 @@ import recursos.Util;
 
 /**
  *
- * @author ReivaJ
+ * @author @foqc
  */
 @ManagedBean
 @ViewScoped
-public class ControladorUsuario {
+public class ControladorUsuario implements Serializable{
 
     private CUsuario objUsuario;
     private CUsuario selObjUsuario;
@@ -32,8 +33,6 @@ public class ControladorUsuario {
         this.objUsuario = new CUsuario();
         this.lstUsuarios = new ArrayList<>();
         this.selObjUsuario = new CUsuario();
-        
-//        cargarMateriasEstudiante();
     }
 
     public CUsuario getObjUsuario() {
@@ -60,13 +59,12 @@ public class ControladorUsuario {
         this.lstUsuarios = lstUsuarios;
     }
 
-    
     /*
      postonstructor se ejecuta luego del constructor
      */
     @PostConstruct
     public void reinit() {
-        CTipoUsuario objTipo= new CTipoUsuario();
+        CTipoUsuario objTipo = new CTipoUsuario();
         this.objUsuario.setObjTipoUsuario(objTipo);
         this.selObjUsuario.setObjTipoUsuario(objTipo);
         cargarUsuario();
@@ -84,61 +82,46 @@ public class ControladorUsuario {
         }
     }
 
-    /*
-     Metodo para insertar en la tabla persona
-     */
-    public void cerrarForm() {
-        RequestContext.getCurrentInstance().closeDialog("dlgEditarPersona");
-        //DefaultRequestContext.getCurrentInstance().execute("dlgPersonaInsertar.hide()");
-    }
-
-    public void frmEditar() {
-        RequestContext.getCurrentInstance().openDialog("dlgEditarPersona");
-    }
-
     //<editor-fold defaultstate="collapsed" desc="Insertar Usuario">
     public void insertarUsuario() {
         try {
             objUsuario.setClave("12345");
             if (MUsuario.insertarUsuario(objUsuario)) {
-                DefaultRequestContext.getCurrentInstance().execute("PF('wgPersonaInsertar').hide()");
-                Util.addSuccessMessage("Datos Insertados");
                 cargarUsuario();
-
+                Util.addSuccessMessage("Datos insertados!");
             } else {
-                Util.mostrarMensaje("Datos no insertados Insertados");
+                Util.mostrarMensaje("Datos no insertados!");
             }
-            objUsuario = null;
         } catch (Exception e) {
             Util.addErrorMessage(e.getMessage());
         }
     }
+
     //</editor-fold>    
     //<editor-fold defaultstate="collapsed" desc="Actualizar Usuario">
-   public void actualizarPersona() {
+    public void actualizarPersona() {
         try {
             if (MUsuario.actualizarUsuario(selObjUsuario)) {
-                DefaultRequestContext.getCurrentInstance().execute("PF('wgEditarPersona').hide()");
-                Util.addSuccessMessage("Datos actualizados");
                 cargarUsuario();
+                DefaultRequestContext.getCurrentInstance().execute("PF('TusuarioEditDialog').hide()");
+                Util.addSuccessMessage("Datos actualizados!");                
             } else {
-                Util.mostrarMensaje("Datos no actualizados");
+                Util.mostrarMensaje("Datos no actualizados!");
             }
-            selObjUsuario = null;
         } catch (Exception e) {
             Util.addErrorMessage(e.getMessage());
         }
     }
-     //</editor-fold>
+
+    //</editor-fold>
     //<editor-fold defaultstate="collapsed" desc="Eliminar Usuario">
     public void eliminarPersona() {
         try {
             if (MUsuario.eliminarUsuario(selObjUsuario.getCodigo())) {
-                DefaultRequestContext.getCurrentInstance().execute("wgEliminarPersona.hide()");
-                Util.addSuccessMessage("Datos eliminados");
+                DefaultRequestContext.getCurrentInstance().execute("PF('TusuarioDeleteDialog').hide()");
+                Util.addSuccessMessage("Datos eliminados!");
                 cargarUsuario();
             }
-            selObjUsuario = null;
         } catch (Exception e) {
             Util.addErrorMessage(e.getMessage());
         }

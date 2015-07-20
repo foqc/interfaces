@@ -7,16 +7,16 @@ package ec.edu.espoch.bsc.entidades;
 
 /**
  *
- * @author @foqc
+ * @author ©foqc
  */
-public class CTipoUsuario {
+public class CTipoDependencia {
     private int codigo;
     private String descripcion;
 
-    public CTipoUsuario() {
+    public CTipoDependencia() {
     }
 
-    public CTipoUsuario(int codigo, String descripcion) {
+    public CTipoDependencia(int codigo, String descripcion) {
         this.codigo = codigo;
         this.descripcion = descripcion;
     }
@@ -36,6 +36,5 @@ public class CTipoUsuario {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    
     
 }

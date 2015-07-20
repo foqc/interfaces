@@ -8,24 +8,24 @@ package ec.edu.espoch.bsc.modelo;
 import ec.edu.espoch.bsc.accesodatos.AccesoDatos;
 import ec.edu.espoch.bsc.accesodatos.ConjuntoResultado;
 import ec.edu.espoch.bsc.accesodatos.Parametro;
-import ec.edu.espoch.bsc.entidades.CTipoUsuario;
+import ec.edu.espoch.bsc.entidades.CTipoDependencia;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  *
- * @author @foqc
+ * @author ©foqc
  */
-public class MTipoUsuario {
-
-    public static boolean insertarTipoUsuario(CTipoUsuario tipoUsuario) throws Exception {
+public class MTipoDependencia {
+    
+    public static boolean insertarTipoDependencia(CTipoDependencia tipoDependencia) throws Exception {
         boolean respuesta = false;
         try {
-            ArrayList<Parametro> lstParamTipoUsusario = new ArrayList<>();
-            String sql = "SELECT bsc.fn_insert_ttipousuario(?)";
-            lstParamTipoUsusario.add(new Parametro(1, tipoUsuario.getDescripcion()));
+            ArrayList<Parametro> lstParamTipoDependencia = new ArrayList<>();
+            String sql = "SELECT bsc.fn_insert_ttipodependencia(?)";
+            lstParamTipoDependencia.add(new Parametro(1, tipoDependencia.getDescripcion()));
 
-            ConjuntoResultado rs = AccesoDatos.ejecutaQuery(sql, lstParamTipoUsusario);
+            ConjuntoResultado rs = AccesoDatos.ejecutaQuery(sql, lstParamTipoDependencia);
             while (rs.next()) {
                 if (rs.getBoolean(0)) {
                     respuesta = true;
@@ -37,17 +37,17 @@ public class MTipoUsuario {
         return respuesta;
     }
 
-    public static List<CTipoUsuario> cargarTipoUsuarios() throws Exception {
-        List<CTipoUsuario> lstTipoUsuarios = new ArrayList<>();
+    public static List<CTipoDependencia> cargarTipoDependencias() throws Exception {
+        List<CTipoDependencia> lstTipoUsuarios = new ArrayList<>();
         try {
-            String sql = "select * from bsc.fn_select_ttipousuario()";
+            String sql = "select * from bsc.fn_select_ttipodependencia()";
             ConjuntoResultado rs = AccesoDatos.ejecutaQuery(sql);
             while (rs.next()) {
-                CTipoUsuario tipoUsuario = new CTipoUsuario();
-                tipoUsuario.setCodigo(rs.getInt(0));
-                tipoUsuario.setDescripcion(rs.getString(1));
+                CTipoDependencia tipoDependencia = new CTipoDependencia();
+                tipoDependencia.setCodigo(rs.getInt(0));
+                tipoDependencia.setDescripcion(rs.getString(1));
 
-                lstTipoUsuarios.add(tipoUsuario);
+                lstTipoUsuarios.add(tipoDependencia);
             }
             rs = null;
         } catch (Exception e) {
@@ -57,15 +57,15 @@ public class MTipoUsuario {
         return lstTipoUsuarios;
     }
 
-    public static boolean actualizarTipoUsuario(CTipoUsuario tipoUsuario) throws Exception {
+    public static boolean actualizarTipoDependencia(CTipoDependencia tipoDependencia) throws Exception {
         boolean respuesta = false;
         try {
-            ArrayList<Parametro> lstParamTipoUsusario = new ArrayList<>();
-            String sql = "SELECT bsc.fn_update_ttipousuario(?,?)";
-            lstParamTipoUsusario.add(new Parametro(1, tipoUsuario.getCodigo()));
-            lstParamTipoUsusario.add(new Parametro(2, tipoUsuario.getDescripcion()));
+            ArrayList<Parametro> lstParamTipoDependencia = new ArrayList<>();
+            String sql = "SELECT bsc.fn_update_ttipodependencia(?,?)";
+            lstParamTipoDependencia.add(new Parametro(1, tipoDependencia.getCodigo()));
+            lstParamTipoDependencia.add(new Parametro(2, tipoDependencia.getDescripcion()));
 
-            ConjuntoResultado rs = AccesoDatos.ejecutaQuery(sql, lstParamTipoUsusario);
+            ConjuntoResultado rs = AccesoDatos.ejecutaQuery(sql, lstParamTipoDependencia);
             while (rs.next()) {
                 if (rs.getBoolean(0)) {
                     respuesta = true;
@@ -77,10 +77,10 @@ public class MTipoUsuario {
         return respuesta;
     }
 
-    public static boolean eliminarTipoUsuario(int codigoRol) throws Exception {
+    public static boolean eliminarTipoDependencia(int codigoRol) throws Exception {
         boolean respuesta = false;
         try {
-            String sql = "select bsc.fn_delete_ttipousuario(?)";
+            String sql = "select bsc.fn_delete_ttipodependencia(?)";
             ArrayList<Parametro> lstParam = new ArrayList<>();
             lstParam.add(new Parametro(1, codigoRol));
 

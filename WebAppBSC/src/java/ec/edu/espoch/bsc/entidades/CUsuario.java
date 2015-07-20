@@ -7,7 +7,7 @@ package ec.edu.espoch.bsc.entidades;
 
 /**
  *
- * @author root
+ * @author @foqc
  */
 public class CUsuario {
     private int codigo;
