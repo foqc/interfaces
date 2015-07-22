@@ -16,26 +16,36 @@
         <p:growl id="growl" life="3000" />
 
         <p:layout fullPage="true">
-            <p:layoutUnit position="north" size="65" header="#{bundle.AppName}">
+            <p:layoutUnit position="north" size="65" header="Balance Score Card">
                 <h:form id="menuForm">
                     <p:menubar>
-                        <p:menuitem value="#{bundle.Home}" outcome="/index" icon="ui-icon-home"/>
-                        <p:submenu label="#{bundle.Maintenance}">
-                           <!-- <p:menuitem value="Taccion" outcome="/taccion/List.xhtml" />
-                            <p:menuitem value="Tarchivo" outcome="/tarchivo/List.xhtml" />
-                            <p:menuitem value="Tarchivoproyecto" outcome="/tarchivoproyecto/List.xhtml" />
-                            <p:menuitem value="Tbsc" outcome="/tbsc/List.xhtml" />
-                            <p:menuitem value="Tdependencia" outcome="/tdependencia/List.xhtml" />
-                            <p:menuitem value="Tobjetivo" outcome="/tobjetivo/List.xhtml" />
-                            <p:menuitem value="Tperspectiva" outcome="/tperspectiva/List.xhtml" />
-                            <p:menuitem value="Tporcentaje" outcome="/tporcentaje/List.xhtml" />
-                            <p:menuitem value="Tproyecto" outcome="/tproyecto/List.xhtml" />
-                            <p:menuitem value="Treporte" outcome="/treporte/List.xhtml" />
-                            <p:menuitem value="Tresponsable" outcome="/tresponsable/List.xhtml" />-->
+                        <p:menuitem value="Inicio" outcome="/index.html" icon="ui-icon-home"/>
+                        <p:menuitem value="Areas" outcome="/index.html" icon="ui-icon-home"/>
+                        <p:menuitem value="Perspectivas" outcome="/index.html" icon="ui-icon-home"/>
+                        <p:menuitem value="Objetivos" outcome="/index.html" icon="ui-icon-home"/>
+                        <p:menuitem value="Proyectos" outcome="/index.html" icon="ui-icon-home"/>
+                        <p:submenu label="Otros">
+                            <!-- <p:menuitem value="Taccion" outcome="/taccion/List.xhtml" />
+                             <p:menuitem value="Tarchivo" outcome="/tarchivo/List.xhtml" />
+                             <p:menuitem value="Tarchivoproyecto" outcome="/tarchivoproyecto/List.xhtml" />
+                             <p:menuitem value="Tbsc" outcome="/tbsc/List.xhtml" />
+                             <p:menuitem value="Tdependencia" outcome="/tdependencia/List.xhtml" />
+                             <p:menuitem value="Tobjetivo" outcome="/tobjetivo/List.xhtml" />
+                             <p:menuitem value="Tperspectiva" outcome="/tperspectiva/List.xhtml" />
+                             <p:menuitem value="Tporcentaje" outcome="/tporcentaje/List.xhtml" />
+                             <p:menuitem value="Tproyecto" outcome="/tproyecto/List.xhtml" />
+                             <p:menuitem value="Treporte" outcome="/treporte/List.xhtml" />
+                             <p:menuitem value="Tresponsable" outcome="/tresponsable/List.xhtml" />-->
                             <p:menuitem value="Tipo Dependencia" outcome="/tipoDependencia/ListTipoDependencia.xhtml" />
-                            <p:menuitem value="Rol" outcome="/rol/ListRol.xhtml" /> 
-                            <p:menuitem value="Usuario" outcome="/usuario/ListUser.xhtml" />
+
                             <p:menuitem value="Visión" outcome="/vision/ListVision.xhtml" />
+                        </p:submenu>
+
+                        <p:submenu label="Personas" icon="ui-icon-person">
+                            <p:menuitem value="Usuario" outcome="/usuario/ListUser.xhtml" />
+                            <p:menuitem value="Rol" outcome="/rol/ListRol.xhtml" /> 
+                            <p:menuitem value="Responsable" outcome="/responsable/Listar.xhtml" />
+                            <p:menuitem value="Permisos" outcome="/vision/ListVision.xhtml" />
                         </p:submenu>
                     </p:menubar>
                 </h:form>

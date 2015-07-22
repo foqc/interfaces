@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TusuarioCreateDlg" widgetVar="TusuarioCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="Nuevo Usuario" showEffect="fade" hideEffect="explode">
+            <h:form id="TusuarioCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{controladorResponsable.objResponsable != null}" styleClass="tblForm">                        
+                        
+                        <p:outputLabel value="Cédula:" for="tusuariocedula" />
+                        <p:inputText id="tusuariocedula" value="#{controladorResponsable.objResponsable.cedula}" title="Cédula" required="true" requiredMessage="#{bundle.CreateTusuarioRequiredMessage_tusuariocedula}"/>
+
+                        <p:outputLabel value="Nombres:" for="tusuarionombres" />
+                        <p:inputText id="tusuarionombres" value="#{controladorResponsable.objResponsable.nombres}" title="Nombres" required="true" requiredMessage="#{bundle.CreateTusuarioRequiredMessage_tusuarionombres}"/>
+
+                        <p:outputLabel value="Apellidos:" for="tusuarioapellidos" />
+                        <p:inputText id="tusuarioapellidos" value="#{controladorResponsable.objResponsable.apellidos}" title="Apellidos" required="true" requiredMessage="#{bundle.CreateTusuarioRequiredMessage_tusuarioapellidos}"/>
+
+                        <p:outputLabel value="Teléfono:" for="tusuariotelefono" />
+                        <p:inputText id="tusuariotelefono" value="#{controladorResponsable.objResponsable.telefono}" title="Teléfono" />
+
+                        <p:outputLabel value="Celular:" for="tusuariocelular" />
+                        <p:inputText id="tusuariocelular" value="#{controladorResponsable.objResponsable.celular}" title="Celular" />
+
+                        <p:outputLabel value="Correo:" for="tusuariocorreo" />
+                        <p:inputText id="tusuariocorreo" value="#{controladorResponsable.objResponsable.correo}" title="Correo" required="true" requiredMessage="#{bundle.CreateTusuarioRequiredMessage_tusuariocorreo}"/>
+
+                        <p:outputLabel value="Dirección:" for="tusuariodireccion" />
+                        <p:inputText id="tusuariodireccion" value="#{controladorResponsable.objResponsable.direccion}" title="Dirección" required="true" requiredMessage="#{bundle.CreateTusuarioRequiredMessage_tusuariodireccion}"/>
+
+                        <p:outputLabel value="Nivel Académico" for="nivelacademico" />
+                        <p:inputText id="nivelacademico" value="#{controladorResponsable.objResponsable.nivelacademico}" title="Dirección" required="true" requiredMessage="#{bundle.CreateTusuarioRequiredMessage_tusuariodireccion}"/>
+
+                    </p:panelGrid>     
+                    <p:separator/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PF('TusuarioCreateDialog').hide()" type="reset" styleClass="btnRight"/>
+                    <p:commandButton actionListener="#{controladorResponsable.insertarResponsable()}" value="#{bundle.Save}" update="display,:TusuarioListForm:datalist,:growl" styleClass="btnRight"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

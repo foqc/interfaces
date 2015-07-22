@@ -10,12 +10,12 @@
 
 
         <ui:define name="title">
-            <h:outputText value="#{bundle.ListTtipousuarioTitle}"></h:outputText>
+            <h:outputText value="Lista de Roles"></h:outputText>
         </ui:define>
 
         <ui:define name="body">
             <h:form id="TtipousuarioListForm">
-                <p:panel header="#{bundle.ListTtipousuarioTitle}">
+                <p:panel header="Lista de Roles">
                     <p:dataTable id="datalist" value="#{controladorTipoUsuario.lstTipoUsuarios}" var="item"
                                  selectionMode="single" selection="#{controladorTipoUsuario.selObjTipoUsuario}"
                                  paginator="true"
@@ -25,7 +25,7 @@
                                  >
 
                         <f:facet name="header">
-                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" update=":TtipousuarioCreateForm" oncomplete="PF('TtipousuarioCreateDialog').show()">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="Nuevo" update=":TtipousuarioCreateForm" oncomplete="PF('TtipousuarioCreateDialog').show()">
                                 <f:setPropertyActionListener value="#{item}" 
                                                              target="#{controladorTipoUsuario.selObjTipoUsuario}"/>
                             </p:commandButton>                       

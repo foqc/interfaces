@@ -9,4 +9,10 @@
             <var>bundle</var>
         </resource-bundle>
     </application>
+    
+    <managed-bean>
+        <managed-bean-name>controladorLogin</managed-bean-name>
+        <managed-bean-class>ec.edu.espoch.bsc.controladores.ControladorLogin</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope> 
+    </managed-bean>
 </faces-config>
