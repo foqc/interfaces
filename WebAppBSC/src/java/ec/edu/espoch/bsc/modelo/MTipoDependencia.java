@@ -77,12 +77,12 @@ public class MTipoDependencia {
         return respuesta;
     }
 
-    public static boolean eliminarTipoDependencia(int codigoRol) throws Exception {
+    public static boolean eliminarTipoDependencia(int codigo) throws Exception {
         boolean respuesta = false;
         try {
             String sql = "select bsc.fn_delete_ttipodependencia(?)";
             ArrayList<Parametro> lstParam = new ArrayList<>();
-            lstParam.add(new Parametro(1, codigoRol));
+            lstParam.add(new Parametro(1, codigo));
 
             ConjuntoResultado rs = AccesoDatos.ejecutaQuery(sql, lstParam);
             while (rs.next()) {

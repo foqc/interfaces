@@ -34,3 +34,6 @@
     background-color: rgb(4, 122, 172);
     background-image: none; 
 }
+.tblFormRowMaxWidth{
+    max-width: 500px;
+}

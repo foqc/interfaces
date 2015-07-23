@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition>
+
+        <p:dialog id="TvisionEditDlg" widgetVar="TvisionEditDialog" modal="true" resizable="false" appendTo="@(body)" header="Editar Datos" showEffect="fade" hideEffect="explode">
+            <h:form id="TvisionEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{controladorVision.selObjVision != null}" styleClass="tblForm">
+                        
+                        <p:outputLabel value="Descripción:" for="tvisiondescripcion" />
+                        <p:inputTextarea rows="6" cols="33" id="tvisiondescripcion" value="#{controladorVision.selObjVision.descripcion}" title="Descripción" required="true" requiredMessage="El campo descripción es requerido!"/>
+                        
+                        <p:outputLabel value="Fecha Edición:" for="tvisionfecha" />
+                        <h:outputText id="tvisionfecha" value="#{controladorVision.objVision.fecha}" title="Fecha Edición">
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                        </h:outputText>
+                    </p:panelGrid>
+                    <p:separator/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PF('TvisionEditDialog').hide()" styleClass="btnRight"/>
+                    <p:commandButton actionListener="#{controladorVision.actualizarVision()}" value="#{bundle.Save}" update="display,:TvisionListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TvisionEditDialog');" styleClass="btnRight"/>     
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
