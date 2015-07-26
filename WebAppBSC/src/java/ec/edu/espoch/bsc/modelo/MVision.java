@@ -9,9 +9,7 @@ import ec.edu.espoch.bsc.accesodatos.AccesoDatos;
 import ec.edu.espoch.bsc.accesodatos.ConjuntoResultado;
 import ec.edu.espoch.bsc.accesodatos.Parametro;
 import ec.edu.espoch.bsc.entidades.CVision;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -44,7 +42,7 @@ public class MVision {
     }
 
     public static List<CVision> cargarVisiones() throws Exception {
-        List<CVision> lstTipoUsuarios = new ArrayList<>();
+        List<CVision> lstVisiones = new ArrayList<>();
         try {
             String sql = "select * from bsc.fn_select_tvision()";
             ConjuntoResultado rs = AccesoDatos.ejecutaQuery(sql);
@@ -54,14 +52,38 @@ public class MVision {
                 vision.setDescripcion(rs.getString(1));
                 vision.setFecha(rs.getDate(2));
 
-                lstTipoUsuarios.add(vision);
+                lstVisiones.add(vision);
             }
             rs = null;
         } catch (Exception e) {
-            lstTipoUsuarios.clear();
+            lstVisiones.clear();
             throw e;
         }
-        return lstTipoUsuarios;
+        return lstVisiones;
+    }
+    
+        public static List<CVision> cargarVisionesPorCodigo(int codigo) throws Exception {
+        List<CVision> lstVisiones = new ArrayList<>();
+        try {
+            ArrayList<Parametro> lstParamVision= new ArrayList<>();
+            String sql = "select * from bsc.fn_selectXcodigo_tvision(?)";
+            lstParamVision.add(new Parametro(1, codigo));
+            
+            ConjuntoResultado rs = AccesoDatos.ejecutaQuery(sql,lstParamVision);
+            while (rs.next()) {
+                CVision vision = new CVision();
+                vision.setCodigo(rs.getInt(0));
+                vision.setDescripcion(rs.getString(1));
+                vision.setFecha(rs.getDate(2));
+
+                lstVisiones.add(vision);
+            }
+            rs = null;
+        } catch (Exception e) {
+            lstVisiones.clear();
+            throw e;
+        }
+        return lstVisiones;
     }
 
     public static boolean actualizarVision(CVision vision) throws Exception {

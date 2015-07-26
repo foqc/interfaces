@@ -17,7 +17,7 @@ import java.util.List;
  * @author ©foqc
  */
 public class MTipoDependencia {
-    
+
     public static boolean insertarTipoDependencia(CTipoDependencia tipoDependencia) throws Exception {
         boolean respuesta = false;
         try {
@@ -38,7 +38,7 @@ public class MTipoDependencia {
     }
 
     public static List<CTipoDependencia> cargarTipoDependencias() throws Exception {
-        List<CTipoDependencia> lstTipoUsuarios = new ArrayList<>();
+        List<CTipoDependencia> lstTipoDependencias = new ArrayList<>();
         try {
             String sql = "select * from bsc.fn_select_ttipodependencia()";
             ConjuntoResultado rs = AccesoDatos.ejecutaQuery(sql);
@@ -47,14 +47,37 @@ public class MTipoDependencia {
                 tipoDependencia.setCodigo(rs.getInt(0));
                 tipoDependencia.setDescripcion(rs.getString(1));
 
-                lstTipoUsuarios.add(tipoDependencia);
+                lstTipoDependencias.add(tipoDependencia);
             }
             rs = null;
         } catch (Exception e) {
-            lstTipoUsuarios.clear();
+            lstTipoDependencias.clear();
             throw e;
         }
-        return lstTipoUsuarios;
+        return lstTipoDependencias;
+    }
+
+    public static List<CTipoDependencia> cargarTipoDependenciasPorCodigo(int codigo) throws Exception {
+        List<CTipoDependencia> lstTipoDependencias = new ArrayList<>();
+        try {
+            ArrayList<Parametro> lstParamTipoDependencia= new ArrayList<>();
+            String sql = "select * from bsc.fn_selectxcodigo_ttipodependencia(?)";
+            lstParamTipoDependencia.add(new Parametro(1, codigo));
+            
+            ConjuntoResultado rs = AccesoDatos.ejecutaQuery(sql,lstParamTipoDependencia);
+            while (rs.next()) {
+                CTipoDependencia tipoDependencia = new CTipoDependencia();
+                tipoDependencia.setCodigo(rs.getInt(0));
+                tipoDependencia.setDescripcion(rs.getString(1));
+
+                lstTipoDependencias.add(tipoDependencia);
+            }
+            rs = null;
+        } catch (Exception e) {
+            lstTipoDependencias.clear();
+            throw e;
+        }
+        return lstTipoDependencias;
     }
 
     public static boolean actualizarTipoDependencia(CTipoDependencia tipoDependencia) throws Exception {
