@@ -264,10 +264,6 @@ img { margin: 0; padding: 0; border: none }
   	width: 130px;
 }
 
-button, html input[type="button"], input[type="reset"], input[type="submit"] {
-  cursor: pointer;
-  -webkit-appearance: button;
-}
 
 .btnPrincipal:hover, .bbtnPrincipal:focus, .btnPrincipal:active, .btnPrincipal.active{
 	color: #fff;
@@ -301,4 +297,32 @@ button, html input[type="button"], input[type="reset"], input[type="submit"] {
   margin: 0 0 80px 0;
   padding: 0;
   list-style: none;
+}
+
+/**************************************/
+#templatemo_header1 .nav_menu1 li a:hover {
+  color: #DEE7ED;
+  /* color: #000; */
+}
+#templatemo_header1 .nav_menu1 li a {
+  display: block;
+  line-height: 28px;
+  color: #FFFFFF;
+  font-size: 14px;
+  text-align: center;
+}
+#templatemo_header1 a {
+  color: #000;
+}
+#templatemo_header1 .nav_menu1 li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#content1 {
+    overflow: hidden;
+    width: 800px;
+    position: relative;
+    height: 670px;
 }

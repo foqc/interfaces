@@ -34,18 +34,18 @@ http://www.templatemo.com/preview/templatemo_378_Avion
 
 <div id="templatemo_wrapper">
 <div id="templatemo_header">
-    <div id="site_title"><a href="#"></a></div>
+    <div id="site_title">Modelo de Aviones</div>
     <audio preload>
     	<source src="click1.mp3" type="audio/mp3">
     	Su explorador no soporta HTML5!
     </audio>
     <ul class="nav_menu">
-        <li><button class="btnMenu btnPrincipal boton"><a href="#home">Inicio</a></button></li>
+        <li><button class="btnMenu btnPrincipal boton"><a href="index.html">Inicio</a></button></li>
         <li><button class="btnMenu btnPrincipal boton"><a href="#home">Créditos</a></button></li>
         <li><button class="btnMenu btnPrincipal boton"><a href="#home">Acerca de</a></button></li>
         <li><button class="btnMenu btnPrincipal boton"><a href="#home">Ayuda</a></button></li>
         <li><button class="btnMenu btnPrincipal boton"><a href="#home">Mapa de Sitio</a></button></li>
-        <li><button class="btnMenu btnPrincipal boton"><a href="#home">Aviones</a></button></li>
+        <li><button class="btnMenu btnPrincipal active"><a href="#home">Aviones</a></button></li>
     </ul>
     <div class="social_button">
     	<a href="#"><img src="images/facebook.png" alt="Facebook" /></a>
@@ -83,9 +83,16 @@ http://www.templatemo.com/preview/templatemo_378_Avion
     
 </div>
 <div id="templatemo_main">
-	<div id="content"> 
+	<div id="content1"> 
     </div> 
 </div>
+<script type="text/javascript">
+            $(document).ready(function() {
+                $('.boton').mouseover(function(){
+                    $('audio')[0].play();
+                });
+            });
+            </script>
 </div>
 <!-- templatemo 378 Avion -->
 </body> 
