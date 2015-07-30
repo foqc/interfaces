@@ -46,6 +46,7 @@ http://www.templatemo.com/preview/templatemo_378_Avion
         <li><button class="btnMenu btnPrincipal boton"><a href="ayuda.html">Ayuda</a></button></li>
         <li><button class="btnMenu btnPrincipal boton"><a href="mapasitio.html">Mapa de Sitio</a></button></li>
         <li><button class="btnMenu btnPrincipal active"><a href="aviones.html">Aviones</a></button></li>
+        <li><button class="btnMenu btnSalir boton" onclick="return confirmar()"><a href="#" title="Salir de la aplicación"><img src="images/iconos/salir.png" style="width:20px">&nbsp;Salir</a></button></li>
     </ul>
     <div class="social_button">
     	<a href="#"><img src="images/facebook.png" alt="Facebook" /></a>
@@ -132,6 +133,19 @@ http://www.templatemo.com/preview/templatemo_378_Avion
                     $('audio')[0].play();
                 });
             });
+            </script>
+<script>
+            function confirmar()
+            {
+                if(confirm('Gracias por visitarnos, ¿Está seguro que desea salir de la aplicación?'))
+                {
+                    window.location='http://www.google.com/';
+                }
+                else
+                {
+                    return false;
+                }   
+            }
             </script>
 </div>
 <!-- templatemo 378 Avion -->

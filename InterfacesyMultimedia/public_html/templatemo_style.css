@@ -453,3 +453,15 @@ img.imagenVistas
   	background-color: rgba(185, 253, 185, 0.17);
     border-color: #32A598;
 }
+
+.btnSalir{
+  	background-color: rgba(147, 1, 1, 0.3);
+  	border-color: #094F4E;
+  	width: 130px;
+}
+
+.btnSalir:hover, .btnSalir:focus, .btnSalir:active, .btnSalir.active{
+	color: #fff;
+  	background-color: rgba(253, 185, 185, 0.17);
+    border-color: #32A598;
+}
