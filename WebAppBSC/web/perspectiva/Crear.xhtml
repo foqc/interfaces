@@ -11,7 +11,7 @@
         <p:dialog id="TusuarioCreateDlg" widgetVar="TusuarioCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="Nuevo Usuario" showEffect="fade" hideEffect="explode">
             <h:form id="TusuarioCreateForm">
                 <h:panelGroup id="display">
-                    <p:panelGrid columns="2" rendered="#{controladorResponsable.objResponsable != null}" styleClass="tblForm">                        
+                    <p:panelGrid columns="2" rendered="#{controladorPerspectiva.objPerspectiva != null}" styleClass="tblForm">                        
                         
                         <p:outputLabel value="Cédula:" for="tusuariocedula" />
                         <p:inputText id="tusuariocedula" value="#{controladorResponsable.objResponsable.cedula}" title="Cédula" required="true" requiredMessage="#{bundle.CreateTusuarioRequiredMessage_tusuariocedula}"/>
