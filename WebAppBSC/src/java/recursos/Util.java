@@ -73,7 +73,7 @@ public class Util {
     
     public static void mostrarMensaje(String msj) {
         if (msj != null) {
-            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "El dato seleccionado no se puede duplicar", msj);
+            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "El numero de cédula que desea ingresar ya se encuentra reguistrado", msj);
             FacesContext.getCurrentInstance().addMessage(null, message);
         }
     }

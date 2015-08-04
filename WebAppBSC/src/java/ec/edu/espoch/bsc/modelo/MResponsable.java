@@ -74,10 +74,10 @@ public class MResponsable {
         return respuesta;
     }
 
-    public static boolean eliminarUsuario(int codigoPersona) throws Exception {
+    public static boolean eliminarResponsable(int codigoPersona) throws Exception {
         boolean respuesta = false;
         try {
-            String sql = "select bsc.fn_delete_tusuario(?)";
+            String sql = "select bsc.fn_delete_tresponsable(?)";
             ArrayList<Parametro> lstParam = new ArrayList<>();
             lstParam.add(new Parametro(1, codigoPersona));
 

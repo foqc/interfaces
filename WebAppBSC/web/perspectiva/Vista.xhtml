@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog 
+            id="TusuarioViewDlg" 
+            widgetVar="TusuarioViewDialog" 
+            modal="true" resizable="false" 
+            appendTo="@(body)" 
+            header="Datos del Responsable" 
+            showEffect="fade" 
+            hideEffect="explode">
+
+            <h:form id="TusuarioViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" styleClass="tblForm">
+
+                        <h:outputText value="Perspectiva:"/>
+                        <h:outputText value="#{controladorPerspectiva.selObjPerspectiva.nombre}" title="Perspectiva" styleClass="tblFormRow"/>
+
+                        <h:outputText value="Descripción:"/>
+                        <h:outputText value="#{controladorPerspectiva.selObjPerspectiva.descripcion}" title="Descripción" styleClass="tblFormRow"/>
+
+                        <h:outputText value="Fecha:"/>
+                        <h:outputText value="#{controladorPerspectiva.selObjPerspectiva.fecha}" title="Fecha" styleClass="tblFormRow"/>
+
+                        <h:outputText value="Porcentaje:"/>
+                        <h:outputText value="#{controladorPerspectiva.selObjPerspectiva.porcentaje} %" title="Porcentaje" styleClass="tblFormRow"/>
+
+                        <h:outputText value="BSC:"/>
+                        <h:outputText value="#{controladorPerspectiva.selObjPerspectiva.bsc}" title="BSC" styleClass="tblFormRow"/>
+
+                    </p:panelGrid>
+                    <p:separator/>
+                    <p:commandButton value="#{bundle.Close}" onclick="PF('TusuarioViewDialog').hide()" styleClass="btnRight"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

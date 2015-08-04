@@ -111,7 +111,7 @@ public class ControladorResponsable implements Serializable {
     //<editor-fold defaultstate="collapsed" desc="Eliminar Responsable">
     public void eliminarResponsable() {
         try {
-            if (MUsuario.eliminarUsuario(selObjResponsable.getCodigo())) {
+            if (MResponsable.eliminarResponsable(selObjResponsable.getCodigo())) {
                 DefaultRequestContext.getCurrentInstance().execute("PF('TusuarioDeleteDialog').hide()");
                 Util.addSuccessMessage("Datos eliminados!");
                 cargarResponsable();
